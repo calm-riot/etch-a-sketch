@@ -1,5 +1,6 @@
 let board = document.querySelector('#board');
-
+let gridX = 16
+let gridY = 16
 
 createGrid();
 function createGrid(gridX = 16, gridY = 16) {
@@ -15,8 +16,6 @@ function createGrid(gridX = 16, gridY = 16) {
     }
     board.style.gridTemplateColumns = `repeat(${gridX}, 1fr)`;
     board.style.gridTemplateRows = `repeat(${gridY}, 1fr)`;
-    console.log(gridX);
-    console.log(gridY);
 }
 let clearGridButton = document.querySelector('.clear');
 
@@ -25,7 +24,7 @@ function clearGrid() {
     for (let i = 0; i < gridBoxes.length; i++) {
         gridBoxes[i].remove();
     }
-    createGrid();
+    createGrid(gridX, gridY);
 }
 
 clearGridButton.addEventListener('click', clearGrid);
@@ -38,11 +37,11 @@ resizeButton.addEventListener('click', () => {
         alert("Size cannot be greater than 128(veryy laggy)");
     }
     else if (newGridSize == null) {
-        
+    
     }
     else {
-        let gridX = newGridSize;
-        let gridY = newGridSize;
+        gridX = newGridSize;
+        gridY = newGridSize;
         clearGrid();
         createGrid(newGridSize, newGridSize);
     }
