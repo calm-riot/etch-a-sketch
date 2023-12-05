@@ -22,9 +22,10 @@ let clearGridButton = document.querySelector('.clear');
 function clearGrid() {
     let gridBoxes = document.querySelectorAll('#box');
     for (let i = 0; i < gridBoxes.length; i++) {
-        gridBoxes[i].remove();
+        if (gridBoxes[i].style.backgroundColor == 'black') {
+            gridBoxes[i].style.backgroundColor = 'white';
+        }
     }
-    createGrid(gridX, gridY);
 }
 
 clearGridButton.addEventListener('click', clearGrid);
